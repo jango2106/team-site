@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Header title="Stashboard" />
     <router-view />
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import Header from './components/Header.vue'; // @ is an alias to /src
+
+@Component({
+  components: {
+    Header
+  },
+})
+export default class Home extends Vue {}
+</script>
 
 <style>
 #app {
