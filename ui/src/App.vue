@@ -6,11 +6,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Header from './components/Header.vue'; // @ is an alias to /src
+import Header from "./components/Header.vue";
 
 @Component({
   components: {
-    Header
+    Header,
   },
 })
 export default class Home extends Vue {}
