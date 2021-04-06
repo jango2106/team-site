@@ -5,13 +5,14 @@
     },
     "response": {
         "status": 200,
-        "body": [
+        "jsonBody": [
             {
                 "repoName": "as-regression",
                 "pullNumber": "12",
+                "title": "THIS IS A PR",
                 "url": "https://github.com",
                 "createdDate": "2021-04-05T22:13:46Z",
-                "lastUpdated": "2021-06-05T22:13:46Z",
+                "lastUpdatedDate": "2021-06-05T22:13:46Z",
                 "isDraft": false,
                 "author": {
                     "name": "jango2106",
@@ -41,9 +42,10 @@
             {
                 "repoName": "as-storagefabric-middle-tier",
                 "pullNumber": "77",
+                "title": "THIS IS A PR ALSO",
                 "url": "https://github.com",
                 "createdDate": "2021-03-05T22:13:46Z",
-                "lastUpdated": "2021-09-05T22:13:46Z",
+                "lastUpdatedDate": "2021-09-05T22:13:46Z",
                 "isDraft": false,
                 "author": {
                     "name": "james",
@@ -65,6 +67,22 @@
                     } 
                 ]
             },
+            {
+                "repoName": "as-storagefabric-ui",
+                "pullNumber": "2",
+                "title": "THIS IS A FLAGGED",
+                "url": "https://github.com",
+                "createdDate": "2021-01-05T22:13:46Z",
+                "lastUpdatedDate": "2021-09-05T22:13:46Z",
+                "isDraft": false,
+                "author": {
+                    "name": "james",
+                    "id": 25558161,
+                    "avatar_url": "https://avatars.githubusercontent.com/u/25558161?v=4"
+                },
+                "reviewers": [],
+                "assignees": []
+            }
         ],
         "headers": {
             "Content-Type": "application/json",

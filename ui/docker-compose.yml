@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mock-api:
+    build: local/mock-api
+    container_name: mock-api
+    ports:
+      - "8085:8080"
+    networks:
+      - config
+
+  # Configure wiremock to have latency like in a dev env to help with look and feel updates
+  mock-api-config:
+    image: curlimages/curl:latest
+    container_name: mock-api-config
+    command: > 
+      sh -c "while true; do curl -s mock-api:8080/__admin/mappings > /dev/null && break; done
+      && curl -L -X POST 'mock-api:8080/__admin/settings' -H 'Content-Type: application/json' -d '{\"fixedDelay\": 200}'"
+    depends_on:
+      - mock-api
+    networks:
+      - config
+
+networks:
+  config:
