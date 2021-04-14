@@ -11,8 +11,8 @@
                 "pullNumber": "12",
                 "title": "THIS IS A PR",
                 "url": "https://github.com",
-                "createdDate": "2021-04-05T22:13:46Z",
-                "lastUpdatedDate": "2021-06-05T22:13:46Z",
+                "createdDate": "{{now offset='-1 days'}}",
+                "lastUpdatedDate": "{{now offset='-6 hours'}}",
                 "isDraft": false,
                 "author": {
                     "name": "jango2106",
@@ -44,8 +44,8 @@
                 "pullNumber": "77",
                 "title": "THIS IS A PR ALSO",
                 "url": "https://github.com",
-                "createdDate": "2021-03-05T22:13:46Z",
-                "lastUpdatedDate": "2021-09-05T22:13:46Z",
+                "createdDate": "{{now offset='-2 days'}}",
+                "lastUpdatedDate": "{{now offset='-1 days'}}",
                 "isDraft": false,
                 "author": {
                     "name": "james",
@@ -72,8 +72,8 @@
                 "pullNumber": "2",
                 "title": "THIS IS A FLAGGED",
                 "url": "https://github.com",
-                "createdDate": "2021-01-05T22:13:46Z",
-                "lastUpdatedDate": "2021-09-05T22:13:46Z",
+                "createdDate": "{{now offset='-5 days'}}",
+                "lastUpdatedDate": "{{now offset='-5 days'}}",
                 "isDraft": false,
                 "author": {
                     "name": "james",

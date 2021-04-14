@@ -4,7 +4,7 @@ import { RootState } from "@/store/types";
 import { GithubState, Pull } from "./types";
 
 export const actions: ActionTree<GithubState, RootState> = {
-  async getPulls({ commit, rootState }): Promise<any> {
+  async getPulls({ commit, rootState }): Promise<void> {
     try {
       const response = await axios({
         url: `${rootState.baseApiUrl}github/pulls`,

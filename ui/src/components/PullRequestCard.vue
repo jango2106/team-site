@@ -13,12 +13,28 @@
 
       <b-container fluid>
         <div>
-           <LabelAndValue v-if="getAgeInHrs() < 24" label="Age" :value="`${getAgeInHrs()} Hours`" />
-           <LabelAndValue v-else label="Age" :value="`${getAgeInHrs() % 24 } Days`" />
+          <LabelAndValue
+            v-if="getAgeInHrs() < 24"
+            label="Age"
+            :value="`${getAgeInHrs()} Hours`"
+          />
+          <LabelAndValue
+            v-else
+            label="Age"
+            :value="`${Math.floor(getAgeInHrs() / 24)} Days`"
+          />
         </div>
         <div>
-           <LabelAndValue v-if="getLastUpdatedInHours() < 24" label="Last Updated" :value="`${getLastUpdatedInHours()} Hours`" />
-           <LabelAndValue v-else label="Last Updated" :value="`${getLastUpdatedInHours() % 24 } Days`" />
+          <LabelAndValue
+            v-if="getLastUpdatedInHours() < 24"
+            label="Last Updated"
+            :value="`${getLastUpdatedInHours()} Hours`"
+          />
+          <LabelAndValue
+            v-else
+            label="Last Updated"
+            :value="`${Math.floor(getLastUpdatedInHours() / 24)} Days`"
+          />
         </div>
 
         <LabelAndValue label="Reviewers" :valueList="getReviewerNames()" />
@@ -39,41 +55,43 @@ import { Pull } from "@/store/modules/github/types";
   },
 })
 export default class Header extends Vue {
-  @Prop() private pull: Pull
+  @Prop() private pull: Pull;
   private ageValueInHrs?: number;
   private lastUpdatedInHrs?: number;
 
   getAgeInHrs(): number {
-    if(this.ageValueInHrs){
-      return this.ageValueInHrs
+    if (this.ageValueInHrs) {
+      return this.ageValueInHrs;
     } else {
       this.ageValueInHrs = this.getTimeDifferenceInHours(this.pull.createdDate);
-      return this.ageValueInHrs
+      return this.ageValueInHrs;
     }
   }
   getLastUpdatedInHours(): number {
-    if(this.lastUpdatedInHrs){
-      return this.lastUpdatedInHrs
+    if (this.lastUpdatedInHrs) {
+      return this.lastUpdatedInHrs;
     } else {
-      this.lastUpdatedInHrs = this.getTimeDifferenceInHours(this.pull.lastUpdatedDate);
-      return this.lastUpdatedInHrs
+      this.lastUpdatedInHrs = this.getTimeDifferenceInHours(
+        this.pull.lastUpdatedDate
+      );
+      return this.lastUpdatedInHrs;
     }
   }
   getTimeDifferenceInHours(dateString: string): number {
-    const milliseconds = Date.parse(dateString) - new Date().getUTCDate();
-    return Math.floor(milliseconds / 1000 / 60 / 60)
+    const milliseconds = new Date().getTime() - Date.parse(dateString);
+    return Math.floor(milliseconds / 1000 / 60 / 60);
   }
   getReviewerNames(): Array<string> {
-    const reviewerNames = this.pull.reviewers.map(reviewer => reviewer.name)
+    const reviewerNames = this.pull.reviewers.map((reviewer) => reviewer.name);
     return reviewerNames.length > 0 ? reviewerNames : ["None"];
   }
   getIconColor(): string {
-    const age = this.getAgeInHrs()
-    if ((this.getAgeInHrs() > 2 && this.pull.reviewers.length === 0) || this.getAgeInHrs() > 4) {
+    const age = this.getAgeInHrs();
+    if ((age >= 48 && this.pull.reviewers.length === 0) || age >= 52) {
       return BootstrapVariants.DANGER;
     } else if (
-      (this.getAgeInHrs() > 1 && this.pull.reviewers.length === 0) ||
-      (this.getAgeInHrs() > 2 && this.pull.reviewers.length !== 0)
+      (age >= 24 && this.pull.reviewers.length === 0) ||
+      (age >= 48 && this.pull.reviewers.length !== 0)
     ) {
       return BootstrapVariants.WARNING;
     } else {
@@ -82,11 +100,12 @@ export default class Header extends Vue {
   }
 
   getIconType(): string {
-    if ((this.getAgeInHrs() > 2 && this.pull.reviewers.length === 0) || this.getAgeInHrs() > 4) {
+    const age = this.getAgeInHrs();
+    if ((age >= 48 && this.pull.reviewers.length === 0) || age >= 52) {
       return "x-circle-fill";
     } else if (
-      (this.getAgeInHrs() > 1 && this.pull.reviewers.length === 0) ||
-      (this.getAgeInHrs() > 2 && this.pull.reviewers.length !== 0)
+      (age >= 24 && this.pull.reviewers.length === 0) ||
+      (age >= 48 && this.pull.reviewers.length !== 0)
     ) {
       return "exclamation-circle-fill";
     } else {

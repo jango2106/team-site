@@ -8,7 +8,7 @@ Vue.use(Vuex);
 const store: StoreOptions<RootState> = {
   state: {
     version: "0.0.1",
-    baseApiUrl: process.env.VUE_APP_API_BASE_URL
+    baseApiUrl: process.env.VUE_APP_API_BASE_URL,
   },
   modules: {
     github,

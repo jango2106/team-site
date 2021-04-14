@@ -22,7 +22,7 @@ export default class Header extends Vue {
   @Prop() private value?: string;
   @Prop() private valueList?: string[];
 
-  getValues() {
+  getValues(): string[] {
     return this.valueList || [this.value];
   }
 }
