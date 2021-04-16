@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col>
+    <b-col class="p-0">
       <b-card-text class="text-right">{{ label }}:</b-card-text>
     </b-col>
     <b-col>

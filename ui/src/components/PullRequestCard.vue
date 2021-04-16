@@ -1,46 +1,44 @@
 <template>
-  <div>
-    <b-card :border-variant="getIconColor()">
-      <b-card-header header-bg-variant="transparent">
-        <b-icon
-          class="mr-1 xl"
-          :icon="getIconType()"
-          :variant="getIconColor()"
+  <b-card :border-variant="getIconColor()">
+    <b-card-header header-bg-variant="transparent" class="p-0 pb-1">
+      <b-icon
+        class="mr-1 xl"
+        :icon="getIconType()"
+        :variant="getIconColor()"
+      />
+      <span>{{ pull.title }}</span>
+    </b-card-header>
+    <b-link target="_blank" :href="pull.link">Github Link</b-link>
+
+    <b-container>
+      <div>
+        <LabelAndValue
+          v-if="getAgeInHrs() < 24"
+          label="Age"
+          :value="`${getAgeInHrs()} Hours`"
         />
-        <span>{{ pull.title }}</span>
-      </b-card-header>
-      <b-link target="_blank" :href="pull.link">Github Link</b-link>
+        <LabelAndValue
+          v-else
+          label="Age"
+          :value="`${Math.floor(getAgeInHrs() / 24)} Days`"
+        />
+      </div>
+      <div>
+        <LabelAndValue
+          v-if="getLastUpdatedInHours() < 24"
+          label="Last Updated"
+          :value="`${getLastUpdatedInHours()} Hours`"
+        />
+        <LabelAndValue
+          v-else
+          label="Last Updated"
+          :value="`${Math.floor(getLastUpdatedInHours() / 24)} Days`"
+        />
+      </div>
 
-      <b-container fluid>
-        <div>
-          <LabelAndValue
-            v-if="getAgeInHrs() < 24"
-            label="Age"
-            :value="`${getAgeInHrs()} Hours`"
-          />
-          <LabelAndValue
-            v-else
-            label="Age"
-            :value="`${Math.floor(getAgeInHrs() / 24)} Days`"
-          />
-        </div>
-        <div>
-          <LabelAndValue
-            v-if="getLastUpdatedInHours() < 24"
-            label="Last Updated"
-            :value="`${getLastUpdatedInHours()} Hours`"
-          />
-          <LabelAndValue
-            v-else
-            label="Last Updated"
-            :value="`${Math.floor(getLastUpdatedInHours() / 24)} Days`"
-          />
-        </div>
-
-        <LabelAndValue label="Reviewers" :valueList="getReviewerNames()" />
-      </b-container>
-    </b-card>
-  </div>
+      <LabelAndValue label="Reviewers" :valueList="getReviewerNames()" />
+    </b-container>
+  </b-card>
 </template>
 
 <script lang="ts">
