@@ -9,7 +9,7 @@
             {
                 "repoName": "as-regression",
                 "pullNumber": "12",
-                "title": "THIS IS A PR",
+                "title": "THIS IS A PR with a really really really long name compared to the others",
                 "url": "https://github.com",
                 "createdDate": "{{now offset='-1 days'}}",
                 "lastUpdatedDate": "{{now offset='-6 hours'}}",
@@ -69,8 +69,72 @@
             },
             {
                 "repoName": "as-storagefabric-ui",
-                "pullNumber": "2",
-                "title": "THIS IS A FLAGGED",
+                "pullNumber": "3",
+                "title": "THIS IS A FLAGGED1",
+                "url": "https://github.com",
+                "createdDate": "{{now offset='-5 days'}}",
+                "lastUpdatedDate": "{{now offset='-5 days'}}",
+                "isDraft": false,
+                "author": {
+                    "name": "james",
+                    "id": 25558161,
+                    "avatar_url": "https://avatars.githubusercontent.com/u/25558161?v=4"
+                },
+                "reviewers": [],
+                "assignees": []
+            },
+            {
+                "repoName": "as-storagefabric-ui",
+                "pullNumber": "4",
+                "title": "THIS IS A FLAGGED2",
+                "url": "https://github.com",
+                "createdDate": "{{now offset='-5 days'}}",
+                "lastUpdatedDate": "{{now offset='-5 days'}}",
+                "isDraft": false,
+                "author": {
+                    "name": "james",
+                    "id": 25558161,
+                    "avatar_url": "https://avatars.githubusercontent.com/u/25558161?v=4"
+                },
+                "reviewers": [],
+                "assignees": []
+            },
+            {
+                "repoName": "as-storagefabric-ui",
+                "pullNumber": "5",
+                "title": "THIS IS A FLAGGED3",
+                "url": "https://github.com",
+                "createdDate": "{{now offset='-5 days'}}",
+                "lastUpdatedDate": "{{now offset='-5 days'}}",
+                "isDraft": false,
+                "author": {
+                    "name": "james",
+                    "id": 25558161,
+                    "avatar_url": "https://avatars.githubusercontent.com/u/25558161?v=4"
+                },
+                "reviewers": [],
+                "assignees": []
+            },
+            {
+                "repoName": "as-storagefabric-ui",
+                "pullNumber": "6",
+                "title": "THIS IS A FLAGGED5",
+                "url": "https://github.com",
+                "createdDate": "{{now offset='-5 days'}}",
+                "lastUpdatedDate": "{{now offset='-5 days'}}",
+                "isDraft": false,
+                "author": {
+                    "name": "james",
+                    "id": 25558161,
+                    "avatar_url": "https://avatars.githubusercontent.com/u/25558161?v=4"
+                },
+                "reviewers": [],
+                "assignees": []
+            },
+            {
+                "repoName": "as-storagefabric-ui",
+                "pullNumber": "7",
+                "title": "THIS IS A FLAGGED6",
                 "url": "https://github.com",
                 "createdDate": "{{now offset='-5 days'}}",
                 "lastUpdatedDate": "{{now offset='-5 days'}}",
