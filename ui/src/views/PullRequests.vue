@@ -1,7 +1,7 @@
 <template>
   <ViewWrapper>
     <div slot="content" class="pull-request">
-      <Title title="Pull Requests" subtitle="ASFA"/>
+      <Title title="Pull Requests" />
       <div class="d-flex justify-content-center flex-wrap">
         <PullRequestCard
           class="m-2 pull-card"
@@ -31,10 +31,10 @@ const githubNamespace = "github";
   },
 })
 export default class PullRequests extends Vue {
-  @State(githubNamespace) github: GithubState;
-  @State("pulls", { namespace: githubNamespace }) pulls: Array<Pull>;
+  @State(githubNamespace) github!: GithubState;
+  @State("pulls", { namespace: githubNamespace }) pulls!: Array<Pull>;
   @Action("getPulls", { namespace: githubNamespace })
-  getPulls: () => Promise<void>;
+  getPulls!: () => Promise<void>;
 
   mounted(): void {
     this.getPulls();

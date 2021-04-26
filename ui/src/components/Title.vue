@@ -10,7 +10,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Header extends Vue {
-  @Prop() private title: string;
+  @Prop({required: true}) private title!: string;
   @Prop() private subtitle?: string;
 }
 </script>

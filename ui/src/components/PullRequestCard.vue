@@ -12,31 +12,38 @@
 
     <b-container>
       <div>
-        <LabelAndValue
+        <CardLabelAndValue
           v-if="getAgeInHrs() < 24"
           label="Age"
           :value="`${getAgeInHrs()} Hours`"
         />
-        <LabelAndValue
+        <CardLabelAndValue
           v-else
           label="Age"
           :value="`${Math.floor(getAgeInHrs() / 24)} Days`"
         />
       </div>
       <div>
-        <LabelAndValue
+        <CardLabelAndValue
           v-if="getLastUpdatedInHours() < 24"
           label="Last Updated"
           :value="`${getLastUpdatedInHours()} Hours`"
         />
-        <LabelAndValue
+        <CardLabelAndValue
           v-else
           label="Last Updated"
           :value="`${Math.floor(getLastUpdatedInHours() / 24)} Days`"
         />
       </div>
-
-      <LabelAndValue label="Reviewers" :valueList="getReviewerNames()" />
+      <CardLabelAndSlot v-if="pull.reviewers.length" label="Reviewers">
+        <div slot="content">
+          <div v-for="reviewer in pull.reviewers" :key="reviewer.id">
+            <b-avatar class="mr-1" :src="reviewer.avatar_url" size="1.5rem" />
+            <span>{{ reviewer.name }}</span>
+          </div>
+        </div>
+      </CardLabelAndSlot>
+      <CardLabelAndValue v-else label="Reviewers" value="None" />
     </b-container>
   </b-card>
 </template>
@@ -44,16 +51,18 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { BootstrapVariants } from "@/constants/BootstrapVariants";
-import LabelAndValue from "@/components/LabelAndValue.vue";
+import CardLabelAndValue from "@/components/CardLabelAndValue.vue";
+import CardLabelAndSlot from "@/components/CardLabelAndSlot.vue";
 import { Pull } from "@/store/modules/github/types";
 
 @Component({
   components: {
-    LabelAndValue,
+    CardLabelAndValue,
+    CardLabelAndSlot,
   },
 })
 export default class Header extends Vue {
-  @Prop() private pull: Pull;
+  @Prop({required: true}) private pull!: Pull;
   private ageValueInHrs?: number;
   private lastUpdatedInHrs?: number;
 
@@ -78,10 +87,6 @@ export default class Header extends Vue {
   getTimeDifferenceInHours(dateString: string): number {
     const milliseconds = new Date().getTime() - Date.parse(dateString);
     return Math.floor(milliseconds / 1000 / 60 / 60);
-  }
-  getReviewerNames(): Array<string> {
-    const reviewerNames = this.pull.reviewers.map((reviewer) => reviewer.name);
-    return reviewerNames.length > 0 ? reviewerNames : ["None"];
   }
   getIconColor(): string {
     const age = this.getAgeInHrs();
