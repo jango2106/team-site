@@ -2,13 +2,16 @@
   <ViewWrapper>
     <div slot="content" class="pull-request">
       <Title title="Pull Requests" />
-      <div class="d-flex justify-content-center flex-wrap">
+      <div v-if="pulls.length" class="d-flex justify-content-center flex-wrap">
         <PullRequestCard
           class="m-2 pull-card"
           v-for="pull in pulls"
           :key="pull.repoName + pull.pullNumber"
           :pull="pull"
         />
+      </div>
+      <div v-else class="d-flex justify-content-center flex-wrap">
+        <PullRequestCardSkeleton v-for="loop in 12" :key="loop" class="m-2 pull-card" />
       </div>
     </div>
   </ViewWrapper>
@@ -18,6 +21,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { State, Action } from "vuex-class";
 import PullRequestCard from "@/components/PullRequestCard.vue";
+import PullRequestCardSkeleton from "@/components/PullRequestCardSkeleton.vue";
 import Title from "@/components/Title.vue";
 import ViewWrapper from "@/components/ViewWrapper.vue";
 import { GithubState, Pull } from "@/store/modules/github/types";
@@ -26,6 +30,7 @@ const githubNamespace = "github";
 @Component({
   components: {
     PullRequestCard,
+    PullRequestCardSkeleton,
     Title,
     ViewWrapper
   },

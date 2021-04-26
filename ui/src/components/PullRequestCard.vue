@@ -61,7 +61,7 @@ import { Pull } from "@/store/modules/github/types";
     CardLabelAndSlot,
   },
 })
-export default class Header extends Vue {
+export default class PullRequestCard extends Vue {
   @Prop({required: true}) private pull!: Pull;
   private ageValueInHrs?: number;
   private lastUpdatedInHrs?: number;
